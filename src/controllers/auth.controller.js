@@ -67,3 +67,20 @@ export const register = async (req, res) => {
     res.status(500).json({ error: "Error al registrar usuario." }); 
   }
 }
+
+export const getProfile = async (req, res) => {
+  try {
+    console.log("Fetching profile for user ID:", req);
+    const userId = req.user.id;
+    const result = await db.execute("SELECT id, nombre, email, rol FROM usuarios WHERE id = ?", [userId]);
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "Usuario no encontrado." });
+    }
+    
+    const user = result.rows[0];
+    res.json({ user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error al obtener el perfil del usuario." });
+  }
+}
