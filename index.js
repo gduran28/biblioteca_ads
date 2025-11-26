@@ -2,6 +2,7 @@ import express from 'express';
 import librosRoutes from './src/routes/libros.routes.js';
 import authRoutes from './src/routes/auth.routes.js';
 import userRoutes from './src/routes/users.routes.js';
+import autoresRoutes from './src/routes/autores.routes.js';
 import cors from 'cors';
 const app = express();
 
@@ -15,6 +16,7 @@ app.get('/', (req, res) => {
 app.use('/libros', librosRoutes);
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes); 
+app.use("/autores", autoresRoutes)
 
 const PORT = process.env.PORT || 3000;
 
