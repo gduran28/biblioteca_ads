@@ -1,0 +1,35 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs
+*.log
+log.txt
+debug.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+build/
+
+# Editor folders
+.vscode/
+.idea/
+
+# Turso related
+*.db
+*.db-shm
+*.db-wal
