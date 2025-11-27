@@ -3,7 +3,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export const login = async (req, res) => {  
-  console.log("Login attempt:", req.body);
   const { email, password } = req.body;
   try {
     const result = await db.execute("SELECT * FROM usuarios WHERE email = ?", [email]);
@@ -12,7 +11,6 @@ export const login = async (req, res) => {
     }
 
     const user = result.rows[0];
-    console.log("🚀 ~ login ~ user:", user.password_hash);
     
     const isPasswordValid = bcrypt.compareSync(password, user.password_hash);
     if (!isPasswordValid) {
@@ -70,7 +68,6 @@ export const register = async (req, res) => {
 
 export const getProfile = async (req, res) => {
   try {
-    console.log("Fetching profile for user ID:", req);
     const userId = req.user.id;
     const result = await db.execute("SELECT id, nombre, email, rol FROM usuarios WHERE id = ?", [userId]);
     if (result.rows.length === 0) {

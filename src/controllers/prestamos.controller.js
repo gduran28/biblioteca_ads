@@ -176,7 +176,6 @@ const setMoraForPrestamo = async (prestamo, mora) => {
 			"SELECT id FROM sanciones WHERE prestamo_id = ? AND pagado = 0",
 			[prestamo.id]
 		);
-		console.log(sancionExiste.rows);
 		if (sancionExiste.rows.length > 0) {
 			return result.rows[0];
 		}
